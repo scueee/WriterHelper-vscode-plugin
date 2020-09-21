@@ -3,7 +3,7 @@
 	"displayName": "写作助手",
 	"description": "用于写作的小插件",
 	"keywords": ["write", "tool"],
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "scueee",
 	"repository": {
 		"type": "git",
@@ -28,6 +28,10 @@
 			{
 				"command": "extension.getPath",
 				"title": "写入配置"
+			},
+			{
+				"command": "extension.createSnippets",
+				"title": "生成 Snippets"
 			}
 		],
 		"keybindings":[
@@ -48,6 +52,11 @@
 				{
 					"when": "editorFocus",
 					"command": "extension.getPath",
+					"group": "navigation"
+				},
+				{
+					"when": "editorFocus",
+					"command": "extension.createSnippets",
 					"group": "navigation"
 				}
 			]
