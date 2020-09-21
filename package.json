@@ -1,0 +1,83 @@
+{
+	"name": "writer-helper",
+	"displayName": "写作助手",
+	"description": "用于写作的小插件",
+	"keywords": ["write", "tool"],
+	"version": "0.0.1",
+	"publisher": "scueee",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/scueee/WriterHelper-vscode-plugin"
+	},
+	"engines": {
+		"vscode": "^1.49.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.load"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.load",
+				"title": "启动 WriterHelper"
+			},
+			{
+				"command": "extension.getPath",
+				"title": "写入配置"
+			}
+		],
+		"keybindings":[
+			{
+				"command": "extension.load",
+				"key": "ctrl+f10",
+				"mac": "cmd+f10",
+				"when": "editorTextFocus"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"when": "editorFocus",
+					"command": "extension.load",
+					"group": "navigation"
+				},
+				{
+					"when": "editorFocus",
+					"command": "extension.getPath",
+					"group": "navigation"
+				}
+			]
+		},
+		"configuration": {
+			"type": "object",
+			"title": "writer-helper",
+			"properties": {
+				"writerHelper.path": {
+					"type": "string",
+					"default": "",
+					"description": "文件路径"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.49.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.0",
+		"@types/node": "^14.0.27",
+		"eslint": "^7.9.0",
+		"glob": "^7.1.6",
+		"mocha": "^8.1.3",
+		"typescript": "^4.0.2",
+		"vscode-test": "^1.4.0"
+	}
+}
