@@ -30,6 +30,15 @@ function activate(context) {
 	//获取当前文件路径，修改配置
 	context.subscriptions.push(vscode.commands.registerCommand('extension.getPath', (uri) => {
 		vscode.workspace.getConfiguration().update('writerHelper.path',uri.path.substring(1),true);
+		//从配置获取文件路径
+		path = vscode.workspace.getConfiguration().get('writerHelper.path');
+		//按行将文本存入数组
+		fs.readFile(path, function (err, data) {
+			if (err) {
+				return console.error(err);
+			}
+			array = data.toString().split("\r\n");
+		});
 		vscode.window.setStatusBarMessage('配置已写入',3000);
 	}));
 
